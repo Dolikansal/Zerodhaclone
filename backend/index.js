@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3002;
 const MONGO_URI = process.env.MONGO_URL;
 const app = express();
 app.use(cors({
-    origin: "http://localhost:3000", // React frontend ka URL
+    origin: "https://zerodha-clone-two-inky.vercel.app/", // React frontend ka URL
     credentials: true,
 }));
 app.use(bodyParser.json());
