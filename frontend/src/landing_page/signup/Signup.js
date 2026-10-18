@@ -24,7 +24,7 @@ const Signup = () => {
     try {
       // Backend signup endpoint hit karega
       const response = await axios.post(
-        'http://localhost:3002/api/auth/signup',
+        'https://zerodhaclone-hph4.onrender.com/api/auth/signup',
         formData,
         { withCredentials: true }
       );
