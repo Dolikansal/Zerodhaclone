@@ -1,16 +1,24 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
-  const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const handleMenuClick = (index) => {
-    setSelectedMenu(index);
-  };
+  useEffect(() => {
+    const path = location.pathname;
+    if (path.includes('/orders')) setSelectedMenu(1);
+    else if (path.includes('/holdings')) setSelectedMenu(2);
+    else if (path.includes('/positions')) setSelectedMenu(3);
+    else if (path.includes('/funds')) setSelectedMenu(4);
+    else setSelectedMenu(0); 
+  }, [location]);
 
-  const handleProfileClick = () => {
-    setIsProfileDropdownOpen(!isProfileDropdownOpen);
+  // Logout handler to clear MERN token and redirect to signin
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate('/signin');
   };
 
   const containerStyle = {
@@ -21,6 +29,8 @@ const Menu = () => {
   const menusStyle = {
     display: "flex",
     alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%",
   };
 
   const menuListStyle = {
@@ -29,6 +39,8 @@ const Menu = () => {
     margin: "0",
     display: "flex",
     alignItems: "center",
+    marginLeft: "235px",
+    gap: "20px"
   };
 
   const baseMenuStyle = {
@@ -38,7 +50,9 @@ const Menu = () => {
     margin: "0",
     padding: "8px 0",
     transition: "all 0.3s ease",
-    cursor: "pointer"
+    cursor: "pointer",
+    textDecoration: "none",
+    display: "block"
   };
 
   const activeMenuStyle = {
@@ -51,125 +65,60 @@ const Menu = () => {
   const profileStyle = {
     display: "flex",
     alignItems: "center",
+    gap: "2px",
+    marginRight: "6px"
+  };
+
+  const logoutBtnStyle = {
+    background: "rgba(220, 53, 69, 0.2)",
+    border: "1px solid rgba(220, 53, 69, 0.4)",
+    color: "#ff6b6b",
+    padding: "4px 10px",
+    borderRadius: "6px",
+    fontSize: "13px",
     cursor: "pointer",
-    borderRadius: "8px",
     transition: "all 0.3s ease"
-  };
-
-  const avatarStyle = {
-    width: "35px",
-    height: "35px",
-    borderRadius: "50%",
-    background: "linear-gradient(135deg, #2196f3 0%, #1976d2 100%)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    color: "white",
-    fontWeight: "600",
-    fontSize: "12px"
-  };
-
-  const usernameStyle = {
-    color: "#e3f2fd",
-    fontWeight: "500",
-    fontSize: "14px",
-    margin: "0"
   };
 
   return (
     <div className="menu-container" style={containerStyle}>
-      <Link 
-        to="/" 
-        style={{ textDecoration: "none" }}
-        onClick={() => setSelectedMenu(-1)} // Reset menu selection
-      >
-        <h2 className="text-primary mt-2" style={{ margin: 0, cursor: "pointer" }}>
-          Zerodha
-        </h2>
-      </Link>
-
       <div className="menus" style={menusStyle}>
         <ul style={menuListStyle}>
-          {/* home */}
           <li>
-            <Link
-              style={{ textDecoration: "none" }}
-              to="/"
-              onClick={() => handleMenuClick(5)}
-            >
-              <p style={selectedMenu === 5 ? activeMenuStyle : baseMenuStyle}>
-                Home
-              </p>
+            <Link to="/dashboard" style={selectedMenu === 0 ? activeMenuStyle : baseMenuStyle}>
+              Dashboard
             </Link>
           </li>
           <li>
-            <Link
-              style={{ textDecoration: "none" }}
-              to="/dashboard"  // Changed from "/"
-              onClick={() => handleMenuClick(0)}
-            >
-              <p style={selectedMenu === 0 ? activeMenuStyle : baseMenuStyle}>
-                Dashboard
-              </p>
+            <Link to="/dashboard/orders" style={selectedMenu === 1 ? activeMenuStyle : baseMenuStyle}>
+              Orders
             </Link>
           </li>
           <li>
-            <Link
-              style={{ textDecoration: "none" }}
-              to="/dashboard/orders"  // Changed from "/orders"
-              onClick={() => handleMenuClick(1)}
-            >
-              <p style={selectedMenu === 1 ? activeMenuStyle : baseMenuStyle}>
-                Orders
-              </p>
+            <Link to="/dashboard/holdings" style={selectedMenu === 2 ? activeMenuStyle : baseMenuStyle}>
+              Holdings
             </Link>
           </li>
           <li>
-            <Link
-              style={{ textDecoration: "none" }}
-              to="/dashboard/holdings"  // Changed from "/holdings"
-              onClick={() => handleMenuClick(2)}
-            >
-              <p style={selectedMenu === 2 ? activeMenuStyle : baseMenuStyle}>
-                Holdings
-              </p>
+            <Link to="/dashboard/positions" style={selectedMenu === 3 ? activeMenuStyle : baseMenuStyle}>
+              Positions
             </Link>
           </li>
           <li>
-            <Link
-              style={{ textDecoration: "none" }}
-              to="/dashboard/positions"  // Changed from "/positions"
-              onClick={() => handleMenuClick(3)}
-            >
-              <p style={selectedMenu === 3 ? activeMenuStyle : baseMenuStyle}>
-                Positions
-              </p>
-            </Link>
-          </li>
-          <li>
-            <Link
-              style={{ textDecoration: "none" }}
-              to="/dashboard/funds"  // Changed from "/funds"
-              onClick={() => handleMenuClick(4)}
-            >
-              <p style={selectedMenu === 4 ? activeMenuStyle : baseMenuStyle}>
-                Funds
-              </p>
+            <Link to="/dashboard/funds" style={selectedMenu === 4 ? activeMenuStyle : baseMenuStyle}>
+              Funds
             </Link>
           </li>
         </ul>
         
-        <div 
-          className="profile" 
-          style={profileStyle}
-          onClick={handleProfileClick}
-        >
-          <div className="avatar" style={avatarStyle}>ZU</div>
-          <p className="username" style={usernameStyle}>USERID</p>
+        <div className="profile" style={profileStyle}>
+          <button onClick={handleLogout} style={logoutBtnStyle}>
+            Logout
+          </button>
         </div>
       </div>
     </div>
   );
 };
 
-export default Menu; 
+export default Menu;

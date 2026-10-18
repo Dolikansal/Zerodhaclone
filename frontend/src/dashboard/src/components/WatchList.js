@@ -112,8 +112,10 @@ const WatchList = () => {
     borderRadius: "8px",
     padding: "16px",
     marginTop: "20px",
-    height: "300px",
-    position: "relative"
+    height: "350px",
+    position: "relative",
+    width:"75%",
+    marginLeft:"45px",
   };
 
   const chartTitleStyle = {

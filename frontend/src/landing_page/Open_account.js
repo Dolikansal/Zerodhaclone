@@ -1,6 +1,13 @@
-import React from 'react';
-
+ import React from 'react';
+ import { useNavigate } from 'react-router-dom'; 
 function Open_account() {
+
+     const navigate = useNavigate(); 
+    
+        const handleSignUpClick = () => {
+            navigate('/signin'); 
+        };
+        
     return ( 
         <div className='container mt-5 text-center text-white' style={{
             background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%)',
@@ -51,7 +58,9 @@ function Open_account() {
                 onMouseLeave={(e) => {
                     e.target.style.transform = 'translateY(0)';
                     e.target.style.boxShadow = '0 5px 15px rgba(100, 181, 246, 0.3)';
-                }}>
+                }}
+                onClick={handleSignUpClick}
+                >
                     Sign up for free
                 </button>
             </div>

@@ -1,6 +1,15 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 function Navbar() {
+    const navigate = useNavigate();
+    const isAuthenticated = localStorage.getItem("token");
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        navigate('/signin');
+    };
+
     return (
         <nav className="navbar navbar-expand-lg bg-dark border-bottom" data-bs-theme="dark">
             <div className="container-fluid">
@@ -13,17 +22,9 @@ function Navbar() {
                 </button>
                 
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <ul className="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
                         <li className="nav-item">
                             <Link className="nav-link active" aria-current="page" to="/">Home</Link>
-                        </li>
-                        {/* Dashboard */}
-                        <li className="nav-item">
-                            <Link className="nav-link active" aria-current="page" to="/dashboard">Dashboard</Link>
-                        </li>
-
-                        <li className="nav-item">
-                            <Link className="nav-link active" aria-current="page" to="/signup">Signup</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link active" aria-current="page" to="/about">About</Link>
@@ -37,6 +38,27 @@ function Navbar() {
                         <li className="nav-item">
                             <Link className="nav-link active" aria-current="page" to="/support">Support</Link>
                         </li>
+
+                        {/* Conditional Rendering based on Authentication */}
+                        {isAuthenticated ? (
+                            <>
+                                <li className="nav-item">
+                                    <Link className="nav-link active text-primary fw-bold" aria-current="page" to="/dashboard">Dashboard</Link>
+                                </li>
+                                <li className="nav-item ms-2">
+                                    <button 
+                                        onClick={handleLogout} 
+                                        className="btn btn-sm text-light fw-bold rounded-2 "
+                                    >
+                                        Logout
+                                    </button>
+                                </li>
+                            </>
+                        ) : (
+                            <li className="nav-item">
+                                <Link className="nav-link active" aria-current="page" to="/signin">Sign In</Link>
+                            </li>
+                        )}
                     </ul>
                 </div>
             </div>

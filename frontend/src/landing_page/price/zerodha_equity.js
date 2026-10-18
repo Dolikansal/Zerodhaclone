@@ -275,14 +275,6 @@ const CommodityCharges = () => (
       <p className="text-light opacity-75 mb-3 transition-slide">
         Calculate your costs upfront using our brokerage calculator
       </p>
-      <a 
-        href="https://zerodha.com/charges/etab-commodities" 
-        target="_blank" 
-        rel="noopener noreferrer"
-        className="btn btn-primary btn-lg px-4 rounded-pill transition-scale"
-      >
-        Visit Calculator
-      </a>
     </div>
   </div>
 );

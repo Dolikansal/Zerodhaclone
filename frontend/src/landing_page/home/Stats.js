@@ -1,6 +1,11 @@
 import React from 'react';
-
+import { useNavigate } from 'react-router-dom';
 function Stats() {
+    const navigate = useNavigate(); 
+    const handleExploreProducts = () => {
+        navigate('/product'); 
+    };
+
     return ( 
        <div className='container' style={{marginTop:"110px", marginBottom:"100px"}}>
         <div className='row text-white'>
@@ -102,19 +107,27 @@ function Stats() {
                 </p>
                 
                 <div className='link-primary mt-4' style={{cursor:"pointer"}}>
-                    <a href='' className='mx-5' style={{
-                        textDecoration:"none",
-                        transition: "all 0.3s ease",
-                        color: "#64b5f6"
-                    }}
-                    onMouseEnter={(e) => {
-                        e.target.style.color = "#2196f3";
-                        e.target.style.textDecoration = "underline";
-                    }}
-                    onMouseLeave={(e) => {
-                        e.target.style.color = "#64b5f6";
-                        e.target.style.textDecoration = "none";
-                    }}>
+                    <a 
+                        href='#' 
+                        className='mx-5' 
+                        style={{
+                            textDecoration:"none",
+                            transition: "all 0.3s ease",
+                            color: "#64b5f6"
+                        }}
+                        onMouseEnter={(e) => {
+                            e.target.style.color = "#2196f3";
+                            e.target.style.textDecoration = "underline";
+                        }}
+                        onMouseLeave={(e) => {
+                            e.target.style.color = "#64b5f6";
+                            e.target.style.textDecoration = "none";
+                        }}
+                        onClick={(e) => {
+                            e.preventDefault(); // Prevent default anchor behavior
+                            handleExploreProducts(); // Call navigation function
+                        }}
+                    >
                         Explore our products
                     </a>
                     <a href='' className='mx-2' style={{
@@ -135,7 +148,7 @@ function Stats() {
                 </div>
             </div>
             <div className='col-6'>
-                <img src="media/Gemini_Generated_Image_audplvaudplvaudp.png" style={{height:"550px" }}></img>
+                <img src="media/Gemini_Generated_Image_audplvaudplvaudp.png" style={{height:"550px" }} alt="Trust with confidence"></img>
             </div>
         </div>
        </div>

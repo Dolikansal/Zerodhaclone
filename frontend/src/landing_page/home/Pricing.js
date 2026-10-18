@@ -1,6 +1,10 @@
 import React from 'react';
-
+import { useNavigate } from 'react-router-dom';
 function Pricing() {
+    const navigate = useNavigate(); 
+        const handleExploreProducts = () => {
+            navigate('/pricing'); 
+        };
     return (
         <div className='container mt-5' style={{
             background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%)',
@@ -48,7 +52,12 @@ function Pricing() {
                     onMouseLeave={(e) => {
                         e.target.style.color = '#64b5f6';
                         e.target.style.borderBottomColor = 'transparent';
-                    }}>
+                    }}
+                    onClick={(e) => {
+                        e.preventDefault(); 
+                        handleExploreProducts(); 
+                    }}
+                    >
                         See Pricing →
                     </a>
                 </div>
