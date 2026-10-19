@@ -1,19 +1,22 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+
 function Pricing() {
     const navigate = useNavigate(); 
-        const handleExploreProducts = () => {
-            navigate('/pricing'); 
-        };
+    const handleExploreProducts = () => {
+        navigate('/pricing'); 
+    };
+
     return (
-        <div className='container mt-5' style={{
+        <div className='container mt-4 mt-md-5 px-3 px-md-4' style={{
             background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%)',
-            padding: '3rem 2rem',
+            padding: '2rem 1rem',
             borderRadius: '20px',
             boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)'
         }}>
-            <div className='row align-items-center'>
-                <div className='col-lg-4 col-md-12 mb-4'>
+            <div className='row align-items-center g-4'>
+                {/* Left Text Section */}
+                <div className='col-lg-4 col-md-12 mb-2 mb-lg-0 text-center text-lg-start'>
                     <h1 style={{
                         color: '#ffffff',
                         fontSize: '2.5rem',
@@ -30,7 +33,7 @@ function Pricing() {
                         color: '#b0b0b0',
                         fontSize: '1.1rem',
                         lineHeight: '1.6',
-                        marginBottom: '2rem'
+                        marginBottom: '1.5rem'
                     }}>
                         We pioneered the concept of discount broking and price transparency in India. 
                         Flat fees and no hidden charges.
@@ -43,7 +46,8 @@ function Pricing() {
                         fontWeight: '600',
                         transition: 'all 0.3s ease',
                         borderBottom: '2px solid transparent',
-                        paddingBottom: '2px'
+                        paddingBottom: '2px',
+                        display: 'inline-block'
                     }} 
                     onMouseEnter={(e) => {
                         e.target.style.color = '#2196f3';
@@ -64,9 +68,11 @@ function Pricing() {
                 
                 <div className='col-lg-2 d-none d-lg-block'></div>
                 
+                {/* Right Cards Section */}
                 <div className='col-lg-6 col-md-12'>
-                    <div className='row text-center justify-content-center'>
-                        <div className='col-xl-4 col-lg-6 col-md-4 col-sm-6 col-12 mb-3'>
+                    <div className='row text-center justify-content-center g-3'>
+                        {/* Card 1 */}
+                        <div className='col-12 col-sm-4 mb-2 mb-sm-0'>
                             <div style={{
                                 background: 'rgba(255, 255, 255, 0.05)',
                                 border: '1px solid rgba(100, 181, 246, 0.2)',
@@ -80,7 +86,7 @@ function Pricing() {
                                 flexDirection: 'column',
                                 justifyContent: 'center',
                                 alignItems: 'center',
-                                minWidth: '150px'
+                                width: '100%'
                             }}
                             onMouseEnter={(e) => {
                                 e.currentTarget.style.transform = 'translateY(-5px)';
@@ -114,7 +120,8 @@ function Pricing() {
                             </div>
                         </div>
                         
-                        <div className='col-xl-4 col-lg-6 col-md-4 col-sm-6 col-12 mb-3'>
+                        {/* Card 2 */}
+                        <div className='col-12 col-sm-4 mb-2 mb-sm-0'>
                             <div style={{
                                 background: 'rgba(255, 255, 255, 0.05)',
                                 border: '1px solid rgba(100, 181, 246, 0.2)',
@@ -128,7 +135,7 @@ function Pricing() {
                                 flexDirection: 'column',
                                 justifyContent: 'center',
                                 alignItems: 'center',
-                                minWidth: '150px'
+                                width: '100%'
                             }}
                             onMouseEnter={(e) => {
                                 e.currentTarget.style.transform = 'translateY(-5px)';
@@ -162,13 +169,14 @@ function Pricing() {
                             </div>
                         </div>
                         
-                        <div className='col-xl-4 col-lg-6 col-md-4 col-sm-6 col-12 mb-3'>
+                        {/* Card 3 */}
+                        <div className='col-12 col-sm-4'>
                             <div style={{
                                 background: 'rgba(255, 255, 255, 0.05)',
                                 border: '1px solid rgba(100, 181, 246, 0.2)',
                                 borderRadius: '12px',
                                 padding: '1.5rem 0.5rem',
-                                transition: 'all 0.3s ease',
+                                transition: 'all 0.3s_ease',
                                 backdropFilter: 'blur(10px)',
                                 height: '180px',
                                 cursor: 'pointer',
@@ -176,7 +184,7 @@ function Pricing() {
                                 flexDirection: 'column',
                                 justifyContent: 'center',
                                 alignItems: 'center',
-                                minWidth: '150px'
+                                width: '100%'
                             }}
                             onMouseEnter={(e) => {
                                 e.currentTarget.style.transform = 'translateY(-5px)';

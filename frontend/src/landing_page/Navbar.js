@@ -12,17 +12,31 @@ function Navbar() {
 
     return (
         <nav className="navbar navbar-expand-lg bg-dark border-bottom" data-bs-theme="dark">
-            <div className="container-fluid">
-                <Link className="navbar-brand" to="/">
-                    <img src="media/WhatsApp Image 2025-10-14 at 15.19.14.jpeg" height="40px" alt="App Logo" style={{marginLeft:"60px"}}/>
+            <div className="container-fluid px-3 px-lg-4">
+                {/* Logo with responsive left margin to prevent overflow on mobile */}
+                <Link className="navbar-brand py-0" to="/">
+                    <img 
+                        src="media/WhatsApp Image 2025-10-14 at 15.19.14.jpeg" 
+                        height="40px" 
+                        alt="App Logo" 
+                        className="ms-2 ms-lg-5" 
+                    />
                 </Link>
                 
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button 
+                    className="navbar-toggler border-0 shadow-none" 
+                    type="button" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#navbarSupportedContent" 
+                    aria-controls="navbarSupportedContent" 
+                    aria-expanded="false" 
+                    aria-label="Toggle navigation"
+                >
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+                    <ul className="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-2 gap-lg-3">
                         <li className="nav-item">
                             <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                         </li>
@@ -45,10 +59,10 @@ function Navbar() {
                                 <li className="nav-item">
                                     <Link className="nav-link active text-primary fw-bold" aria-current="page" to="/dashboard">Dashboard</Link>
                                 </li>
-                                <li className="nav-item ms-2">
+                                <li className="nav-item mt-1 mt-lg-0">
                                     <button 
                                         onClick={handleLogout} 
-                                        className="btn btn-sm text-light fw-bold rounded-2 "
+                                        className="btn btn-sm text-light fw-bold rounded-2 px-3"
                                     >
                                         Logout
                                     </button>

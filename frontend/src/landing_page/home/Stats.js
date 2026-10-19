@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+
 function Stats() {
     const navigate = useNavigate(); 
     const handleExploreProducts = () => {
@@ -7,10 +8,11 @@ function Stats() {
     };
 
     return ( 
-       <div className='container' style={{marginTop:"110px", marginBottom:"100px"}}>
-        <div className='row text-white'>
-            <div className='col-6'>
-                <h1 className='mb-5 fs-2' style={{
+       <div className='container my-5 py-md-4 px-3 px-md-4'>
+        <div className='row align-items-center text-white g-4 g-lg-5'>
+            {/* Left Content Column */}
+            <div className='col-12 col-lg-6 order-2 order-lg-1 text-center text-lg-start'>
+                <h1 className='mb-4 mb-md-5 fs-2 fw-bold' style={{
                     transition: "color 0.3s ease"
                 }}
                 onMouseEnter={(e) => e.target.style.color = "#64b5f6"}
@@ -18,7 +20,7 @@ function Stats() {
                     Trust with Confidence
                 </h1>
                 
-                <h2 className='fs-3' style={{
+                <h2 className='fs-4 fw-semibold mt-3' style={{
                     transition: "all 0.3s ease",
                     cursor: "pointer"
                 }}
@@ -33,6 +35,7 @@ function Stats() {
                     Custmor-first always
                 </h2>
                 <p style={{
+                    color: "#b0b0b0",
                     transition: "color 0.3s ease"
                 }}
                 onMouseEnter={(e) => e.target.style.color = "#e0e0e0"}
@@ -40,7 +43,7 @@ function Stats() {
                     That's why 1.3+ crore customer trust zerodha with 3.5+ lakhs crores worth of equality investment .
                 </p>
                 
-                <h2 className='fs-3' style={{
+                <h2 className='fs-4 fw-semibold mt-3' style={{
                     transition: "all 0.3s ease",
                     cursor: "pointer"
                 }}
@@ -55,6 +58,7 @@ function Stats() {
                     No spam of gimmicks
                 </h2>
                 <p style={{
+                    color: "#b0b0b0",
                     transition: "color 0.3s ease"
                 }}
                 onMouseEnter={(e) => e.target.style.color = "#e0e0e0"}
@@ -62,7 +66,7 @@ function Stats() {
                     No gimmicks , spam , "gimmification" , or annoying push notifications . High quality app that you use at your pace, the way you like .
                 </p>
                 
-                <h2 className='fs-3' style={{
+                <h2 className='fs-4 fw-semibold mt-3' style={{
                     transition: "all 0.3s ease",
                     cursor: "pointer"
                 }}
@@ -77,6 +81,7 @@ function Stats() {
                     The Zerodha universe
                 </h2>
                 <p style={{
+                    color: "#b0b0b0",
                     transition: "color 0.3s ease"
                 }}
                 onMouseEnter={(e) => e.target.style.color = "#e0e0e0"}
@@ -84,7 +89,7 @@ function Stats() {
                     Not just an app , but a whole ecosystem. our investment in 30+ fintech startups offer you tailored service specific to your needs.
                 </p>
                 
-                <h2 className='fs-3' style={{
+                <h2 className='fs-4 fw-semibold mt-3' style={{
                     transition: "all 0.3s ease",
                     cursor: "pointer"
                 }}
@@ -99,6 +104,7 @@ function Stats() {
                     Do better with money
                 </h2>
                 <p style={{
+                    color: "#b0b0b0",
                     transition: "color 0.3s ease"
                 }}
                 onMouseEnter={(e) => e.target.style.color = "#e0e0e0"}
@@ -106,14 +112,14 @@ function Stats() {
                     With initative like Nudge and Kill switch, we dont just faciliate transactions, but actively help you do better with your money . 
                 </p>
                 
-                <div className='link-primary mt-4' style={{cursor:"pointer"}}>
+                <div className='d-flex flex-wrap justify-content-center justify-content-lg-start gap-3 mt-4'>
                     <a 
                         href='#' 
-                        className='mx-5' 
                         style={{
                             textDecoration:"none",
                             transition: "all 0.3s ease",
-                            color: "#64b5f6"
+                            color: "#64b5f6",
+                            fontWeight: "500"
                         }}
                         onMouseEnter={(e) => {
                             e.target.style.color = "#2196f3";
@@ -124,31 +130,42 @@ function Stats() {
                             e.target.style.textDecoration = "none";
                         }}
                         onClick={(e) => {
-                            e.preventDefault(); // Prevent default anchor behavior
-                            handleExploreProducts(); // Call navigation function
+                            e.preventDefault(); 
+                            handleExploreProducts(); 
                         }}
                     >
-                        Explore our products
+                        Explore our products →
                     </a>
-                    <a href='' className='mx-2' style={{
-                        textDecoration:"none",
-                        transition: "all 0.3s ease",
-                        color: "#64b5f6"
-                    }}
-                    onMouseEnter={(e) => {
-                        e.target.style.color = "#2196f3";
-                        e.target.style.textDecoration = "underline";
-                    }}
-                    onMouseLeave={(e) => {
-                        e.target.style.color = "#64b5f6";
-                        e.target.style.textDecoration = "none";
-                    }}>
-                        Try kite demo
+                    <a 
+                        href='#' 
+                        style={{
+                            textDecoration:"none",
+                            transition: "all 0.3s ease",
+                            color: "#64b5f6",
+                            fontWeight: "500"
+                        }}
+                        onMouseEnter={(e) => {
+                            e.target.style.color = "#2196f3";
+                            e.target.style.textDecoration = "underline";
+                        }}
+                        onMouseLeave={(e) => {
+                            e.target.style.color = "#64b5f6";
+                            e.target.style.textDecoration = "none";
+                        }}
+                    >
+                        Try kite demo →
                     </a>
                 </div>
             </div>
-            <div className='col-6'>
-                <img src="media/Gemini_Generated_Image_audplvaudplvaudp.png" style={{height:"550px" }} alt="Trust with confidence"></img>
+
+            {/* Right Image Column */}
+            <div className='col-12 col-lg-6 order-1 order-lg-2 text-center mb-3 mb-lg-0'>
+                <img 
+                    src="media/Gemini_Generated_Image_audplvaudplvaudp.png" 
+                    className="img-fluid"
+                    style={{ maxHeight: "550px", width: "auto", objectFit: "contain" }} 
+                    alt="Trust with confidence"
+                />
             </div>
         </div>
        </div>
